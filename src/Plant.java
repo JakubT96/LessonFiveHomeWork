@@ -1,7 +1,8 @@
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Scanner;
 
-public class Plant {
+public class Plant implements Comparable<Plant> {
     String name;
     String notes;
     LocalDate planted;
@@ -76,5 +77,15 @@ public class Plant {
                 "Frekvence zálivky je: " + frequencyOfWatering + "| " +
                 "Vysazeno dne: " + planted + "| " +
                 "Naposledy zalito: " + watering + "\n";
+    }
+
+    @Override
+    public int compareTo(Plant secondPlant) {
+        int compareNames = this.getName().compareTo(secondPlant.getName());
+        if (compareNames!=0){
+            return compareNames;
+        } else {
+            return  this.getName().compareTo(secondPlant.getName());
+        }
     }
 }

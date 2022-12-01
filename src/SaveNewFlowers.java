@@ -55,8 +55,9 @@ public class SaveNewFlowers {
         } catch (IOException e) {
             throw new PlantException("Nastala chyba při zápis do souboru:" +e.getLocalizedMessage()); // zahrhnout původní chybobou hlášku
         }
-       /*
-        public void getFlowerFromIndex{
+
+
+      /*  public void getFlowerFromIndex {
             int sizeOfList= plant.size()-1;
             System.out.println("Zadej index květiny kterou chceš: ");
         int indexOfFlower = Integer.parseInt(sc.nextLine());
@@ -65,7 +66,7 @@ public class SaveNewFlowers {
         }
         System.out.println("Výpis květiny \n"+plant.get(indexOfFlower));
         }
-        public void deleteFlowerFromIndex{
+        public void deleteFlowerFromIndex {
             int sizeOfList= plant.size()-1;
             System.out.println("Zadej index květiny kterou smazat: ");
         int indexOfFlowerDelete = Integer.parseInt(sc.nextLine());

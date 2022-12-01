@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,6 +23,18 @@ public class Main {
         List<Plant> plant = register.getPlant();
         System.out.println(plant);
         int sizeOfList= plant.size()-1;
+        Collections.sort(plant);
+
+        /*
+        //ODEBRÁNÍ POLOŽKY DO SEZNAMU
+        System.out.println("Zadej index květiny kterou smazat: ");
+        int indexOfFlowerDelete = Integer.parseInt(sc.nextLine());
+        if (indexOfFlowerDelete>sizeOfList && indexOfFlowerDelete <= 0){
+            throw new PlantException("Zadal jsi hodnotu indexu,která není v seznamu");
+        }
+        System.out.println("Zadal jsi:"+ indexOfFlowerDelete);
+        plant.remove(indexOfFlowerDelete);
+
 
         //ZÍSKÁNÍ POLOŽKY ZE SEZNAMU
         System.out.println("Zadej index květiny kterou chceš: ");
@@ -29,29 +43,26 @@ public class Main {
             throw new PlantException("Zadal jsi hodnotu indexu,která není v seznamu");
         }
         System.out.println("Výpis květiny \n"+plant.get(indexOfFlower));
-
+*/
         //PŘIDÁNÍ POLOŽKY DO SEZNAMU
         try {
             register.addPlant(new Plant("Tulipán", "Žlutý", 7, LocalDate.of(2022,1,1), LocalDate.of(2022,1,8))); // přidání další květiny
 
             register.addPlant(new Plant("Kaktus", "Pichá", 30, LocalDate.of(2022,1,1), LocalDate.of(2022,2,1))); // přidání další květiny
+            register.addPlant(new Plant("Pivonka", "Pění", 15, LocalDate.of(2022,1,1), LocalDate.of(2022,1,15))); // přidání další květiny
+
         } catch (PlantException e) {
             System.err.println ("Chyba při zadávání souboru"+ e.getLocalizedMessage());
         }
 
 
-        //ODEBRÁNÍ POLOŽKY DO SEZNAMU
-        System.out.println("Zadej index květiny kterou smazat: ");
-        int indexOfFlowerDelete = Integer.parseInt(sc.nextLine());
-        if (indexOfFlowerDelete>sizeOfList && indexOfFlowerDelete <= 0){
-            throw new PlantException("Zadal jsi hodnotu indexu,která není v seznamu");
-        }
-        plant.remove(indexOfFlowerDelete);
-        //Výpis po přidání a smazání
+        System.out.println("Výpis položek podle názvu:");
+        Collections.sort(plant, new PlantNameComparater());
+        plant.forEach(System.out::println);
 
-
-        System.out.println("Výpis položek:");
-        System.out.println(plant);
+        System.out.println("Výpis položek podle data zálivky:");
+        Collections.sort(plant, new PlantWateringComparater());
+        plant.forEach(System.out::println);
 
 
         try {                                       // uložení data do souboru s vyjímkami
