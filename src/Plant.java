@@ -27,6 +27,7 @@ public class Plant implements Comparable<Plant> {
         this.watering= LocalDate.now();
         this.planted= LocalDate.now();
     }
+
     public String getName() {
         return name;
     }
@@ -64,9 +65,9 @@ public class Plant implements Comparable<Plant> {
         }
         this.frequencyOfWatering = frequencyOfWatering;
     }
-    public String getWateringInfo(String name, LocalDate watering, int frequencyOfWatering){
+    public static void getWateringInfo(String name, LocalDate watering, int frequencyOfWatering){
         watering= watering.plusDays(frequencyOfWatering);
-        return "Watering info is:" + name + "Datum poslední zálivky: " + "Další doporučená zálivka je:" + watering;
+        System.out.println("Watering info is:" + name + "Datum poslední zálivky: " + "Další doporučená zálivka je:" + watering);
 
     }
 

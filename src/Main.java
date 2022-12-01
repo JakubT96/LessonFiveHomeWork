@@ -19,53 +19,29 @@ public class Main {
         } catch (PlantException e) {
             System.err.println("Chyba při načtení souborů: "+e.getLocalizedMessage());
         }
-        System.out.println("Výpis všech položek:");
+        System.out.println("Výpis všech položek ze vstupního souboru:");
         List<Plant> plant = register.getPlant();
         System.out.println(plant);
         int sizeOfList= plant.size()-1;
         Collections.sort(plant);
 
-        /*
-        //ODEBRÁNÍ POLOŽKY DO SEZNAMU
-        System.out.println("Zadej index květiny kterou smazat: ");
-        int indexOfFlowerDelete = Integer.parseInt(sc.nextLine());
-        if (indexOfFlowerDelete>sizeOfList && indexOfFlowerDelete <= 0){
-            throw new PlantException("Zadal jsi hodnotu indexu,která není v seznamu");
-        }
-        System.out.println("Zadal jsi:"+ indexOfFlowerDelete);
-        plant.remove(indexOfFlowerDelete);
+        SaveNewFlowers.getFlowerFromIndex();
+        SaveNewFlowers.deleteFlowerFromIndex();
+        SaveNewFlowers.nextFlowerToList();
+        //Plant.getWateringInfo();
 
 
-        //ZÍSKÁNÍ POLOŽKY ZE SEZNAMU
-        System.out.println("Zadej index květiny kterou chceš: ");
-        int indexOfFlower = Integer.parseInt(sc.nextLine());
-        if (indexOfFlower>sizeOfList && indexOfFlower <= 0){
-            throw new PlantException("Zadal jsi hodnotu indexu,která není v seznamu");
-        }
-        System.out.println("Výpis květiny \n"+plant.get(indexOfFlower));
-*/
-        //PŘIDÁNÍ POLOŽKY DO SEZNAMU
-        try {
-            register.addPlant(new Plant("Tulipán", "Žlutý", 7, LocalDate.of(2022,1,1), LocalDate.of(2022,1,8))); // přidání další květiny
+        System.out.println("Výpis položek ze vstupu podle názvu:");
 
-            register.addPlant(new Plant("Kaktus", "Pichá", 30, LocalDate.of(2022,1,1), LocalDate.of(2022,2,1))); // přidání další květiny
-            register.addPlant(new Plant("Pivonka", "Pění", 15, LocalDate.of(2022,1,1), LocalDate.of(2022,1,15))); // přidání další květiny
-
-        } catch (PlantException e) {
-            System.err.println ("Chyba při zadávání souboru"+ e.getLocalizedMessage());
-        }
-
-
-        System.out.println("Výpis položek podle názvu:");
         Collections.sort(plant, new PlantNameComparater());
         plant.forEach(System.out::println);
 
-        System.out.println("Výpis položek podle data zálivky:");
+        System.out.println("Výpis položek vstupu podle data zálivky:");
         Collections.sort(plant, new PlantWateringComparater());
         plant.forEach(System.out::println);
 
-
-        try {                                       // uložení data do souboru s vyjímkami
+        // uložení data do souboru s vyjímkami
+        try {
             register.writePlantToFile(OUTPUT_FILENAME);
         } catch (PlantException e) {
             System.err.println(e.getLocalizedMessage());
