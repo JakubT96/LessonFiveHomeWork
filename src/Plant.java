@@ -1,6 +1,4 @@
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Scanner;
 
 public class Plant implements Comparable<Plant> {
     String name;
@@ -49,13 +47,13 @@ public class Plant implements Comparable<Plant> {
     public LocalDate getWatering() {
         return watering;
     }
-    /*public void setWatering(LocalDate watering) throws PlantException { // zdroj pro porovnání:  https://www.javatpoint.com/java-date-compareto-method
+    public void setWatering(LocalDate watering) throws PlantException { // zdroj pro porovnání:  https://www.javatpoint.com/java-date-compareto-method
        int compareDate= watering.compareTo(planted);
         if (compareDate==0 && compareDate==1){
             throw new PlantException("Datum zálivky nesmí být starší nebo stejné než datum zasanení!");
         }
         this.watering = watering;
-    }*/
+    }
     public int getFrequencyOfWatering() {
         return frequencyOfWatering;
     }
@@ -65,12 +63,6 @@ public class Plant implements Comparable<Plant> {
         }
         this.frequencyOfWatering = frequencyOfWatering;
     }
-    public static void getWateringInfo(String name, LocalDate watering, int frequencyOfWatering){
-        watering= watering.plusDays(frequencyOfWatering);
-        System.out.println("Watering info is:" + name + "Datum poslední zálivky: " + "Další doporučená zálivka je:" + watering);
-
-    }
-
 
     public String toString(){
         return "Název je: "+name+ "| "+

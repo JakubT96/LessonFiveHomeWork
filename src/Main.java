@@ -25,20 +25,23 @@ public class Main {
         int sizeOfList= plant.size()-1;
         Collections.sort(plant);
 
-        SaveNewFlowers.getFlowerFromIndex();
-        SaveNewFlowers.deleteFlowerFromIndex();
-        SaveNewFlowers.nextFlowerToList();
-        //Plant.getWateringInfo();
-
-
         System.out.println("Výpis položek ze vstupu podle názvu:");
 
         Collections.sort(plant, new PlantNameComparater());
         plant.forEach(System.out::println);
 
-        System.out.println("Výpis položek vstupu podle data zálivky:");
+        System.out.println("Výpis položek ze vstupu podle data zálivky:");
         Collections.sort(plant, new PlantWateringComparater());
         plant.forEach(System.out::println);
+
+        SaveNewFlowers.getFlowerFromIndex();
+        SaveNewFlowers.deleteFlowerFromIndex();
+        SaveNewFlowers.nextFlowerToList();
+
+        System.out.println("Ve výstupním souboru jsou změny tj. 2ks kytky přidané a smazána podle indexu, který si zadal. ");
+
+        SaveNewFlowers.getWateringInfo();
+
 
         // uložení data do souboru s vyjímkami
         try {
@@ -46,7 +49,6 @@ public class Main {
         } catch (PlantException e) {
             System.err.println(e.getLocalizedMessage());
         }
-
     }
 
 }

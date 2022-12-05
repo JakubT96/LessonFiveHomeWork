@@ -42,9 +42,8 @@ public class SaveNewFlowers {
             throw new PlantException("Špatný formát data:"+items[3]+ "nebo"+ items[4]+ "na řádku: "+ lineNumber);
         }
     }
-    
-    
-    
+
+
     
     
     public void writePlantToFile(String filename) throws PlantException {  // zápis do souboru ( ulozí novy soubor)
@@ -84,5 +83,12 @@ public class SaveNewFlowers {
                 register.addPlant(new Plant("Kaktus", "Pichá", 30, LocalDate.of(2022,1,1), LocalDate.of(2022,2,1))); // přidání další květiny
 
     }
+    public static void getWateringInfo() {
+        int i=0;
+        for ( Plant plant : plant){
 
+        System.out.println("Watering info is: " + SaveNewFlowers.plant.get(i).getName() + " Datum poslední zálivky: "+SaveNewFlowers.plant.get(i).getWatering()+ " Další doporučená zálivka je: "+SaveNewFlowers.plant.get(i).getWatering().plusDays(SaveNewFlowers.plant.get(i).frequencyOfWatering));
+   i++;
+    }
+}
 }
