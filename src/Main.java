@@ -42,6 +42,9 @@ public class Main {
 
         SaveNewFlowers.getWateringInfo();
 
+        System.out.println("Výpis datumů, kdy jsi něco zasadil:");
+        SaveNewFlowers.getDateOfPlanted();
+
 
         // uložení data do souboru s vyjímkami
         try {

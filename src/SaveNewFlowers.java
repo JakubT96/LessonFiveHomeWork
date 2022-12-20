@@ -91,4 +91,14 @@ public class SaveNewFlowers {
    i++;
     }
 }
+    public static void getDateOfPlanted() {
+      int a =0;
+        for ( Plant plant : plant){
+            System.out.println(SaveNewFlowers.plant.get(a).getPlanted());
+            a++;
+        }
+
+    }
+
+
 }
