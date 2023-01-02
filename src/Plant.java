@@ -14,16 +14,8 @@ public class Plant implements Comparable<Plant> {
         this.watering=watering;
         this.planted = planted;
     }
-    public Plant(String notes, LocalDate watering) {
-        this.notes = null;
-        this.watering= LocalDate.now();
-
-    }
-    public Plant(String notes,  int frequencyOfWatering,LocalDate watering,LocalDate planted) {
-        this.notes = null;
-        this.frequencyOfWatering= 7;
-        this.watering= LocalDate.now();
-        this.planted= LocalDate.now();
+    public Plant(String name, int frequencyOfWatering, LocalDate planted) throws PlantException {
+        this(name, "", frequencyOfWatering, LocalDate.now(), planted);
     }
 
     public String getName() {
@@ -49,10 +41,9 @@ public class Plant implements Comparable<Plant> {
     }
     public void setWatering(LocalDate watering) throws PlantException { // zdroj pro porovnání:  https://www.javatpoint.com/java-date-compareto-method
        int compareDate= watering.compareTo(planted);
-        if (compareDate==0 && compareDate==1){
+        if (watering.compareTo(planted) <= 0){
             throw new PlantException("Datum zálivky nesmí být starší nebo stejné než datum zasanení!");
         }
-        this.watering = watering;
     }
     public int getFrequencyOfWatering() {
         return frequencyOfWatering;
@@ -74,11 +65,6 @@ public class Plant implements Comparable<Plant> {
 
     @Override
     public int compareTo(Plant secondPlant) {
-        int compareNames = this.getName().compareTo(secondPlant.getName());
-        if (compareNames!=0){
-            return compareNames;
-        } else {
-            return  this.getName().compareTo(secondPlant.getName());
-        }
+        return this.getName().compareTo(secondPlant.getName());
     }
-}
+    }

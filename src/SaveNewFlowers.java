@@ -78,26 +78,23 @@ public class SaveNewFlowers {
         }
         public static void nextFlowerToList() throws PlantException {
             SaveNewFlowers register = new SaveNewFlowers();
-                register.addPlant(new Plant("Tulipán", "Je žlutý", 7, LocalDate.of(2022,1,1), LocalDate.of(2022,1,8))); // přidání další květiny
+                register.addPlant(new Plant("Tulipán", "Je žlutý", 7, LocalDate.of(2022,5,1), LocalDate.of(2022,1,8))); // přidání další květiny
 
                 register.addPlant(new Plant("Kaktus", "Pichá", 30, LocalDate.of(2022,1,1), LocalDate.of(2022,2,1))); // přidání další květiny
 
     }
     public static void getWateringInfo() {
         int i=0;
+        System.out.println("Watering info from output is: \n");
         for ( Plant plant : plant){
-
-        System.out.println("Watering info is: " + SaveNewFlowers.plant.get(i).getName() + " Datum poslední zálivky: "+SaveNewFlowers.plant.get(i).getWatering()+ " Další doporučená zálivka je: "+SaveNewFlowers.plant.get(i).getWatering().plusDays(SaveNewFlowers.plant.get(i).frequencyOfWatering));
+        System.out.println("Název rostliny: " + SaveNewFlowers.plant.get(i).getName() + " Datum poslední zálivky: "+SaveNewFlowers.plant.get(i).getWatering()+ " Další doporučená zálivka je: "+SaveNewFlowers.plant.get(i).getWatering().plusDays(SaveNewFlowers.plant.get(i).frequencyOfWatering));
    i++;
     }
 }
     public static void getDateOfPlanted() {
-      int a =0;
-        for ( Plant plant : plant){
-            System.out.println(SaveNewFlowers.plant.get(a).getPlanted());
-            a++;
+        for ( Plant onePlant : plant){
+            System.out.println(onePlant.getPlanted());
         }
-
     }
 
 
